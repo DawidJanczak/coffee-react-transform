@@ -66,10 +66,6 @@ class Serialiser
     # this code rewrites attr pair, spread, etc nodes into CS (code fragment) 
     # and whitespace nodes. then they are serialised and joined with whitespace 
     # maintained, and newlines escaped (except at the end of an args list)
-    
-    # initial object assign arg
-    if firstNonWhitespaceChild(children)?.type is $.CJSX_ATTR_SPREAD
-      assigns.push(type: $.CS, value: '{}')
 
     # group sets of attr pairs between spreads
     for child, childIndex in children
@@ -102,7 +98,7 @@ class Serialiser
 
     joinedAssigns = joinList(assignsWithWhitespace)
 
-    "React.__spread(#{joinList(assignsWithWhitespace)})"
+    "Object.assign({}, #{joinList(assignsWithWhitespace)})"
 
   serialiseAttributePairs: (children) ->
     # whitespace (particularly newlines) must be maintained
