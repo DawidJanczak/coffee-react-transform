@@ -584,7 +584,7 @@ self closing tag with spread attribute
 ##input
 <Component a={b} {... x } b="c" />
 ##expected
-React.createElement(Component, Object.assign({}, {"a": (b)},  x , {"b": "c"}))
+React.createElement(Component, Object.assign({"a": (b)},  x , {"b": "c"}))
 ##end
 
 ##desc
@@ -618,7 +618,7 @@ multiline tag with spread attribute
 >
 </Component>
 ##expected
-React.createElement(Component, Object.assign({}, { \
+React.createElement(Component, Object.assign({ \
   "z": "1"
   }, x, { \
   "a": (b),  \
@@ -669,7 +669,7 @@ self closing spread attribute on single line
 ##input
 <Component a="b" c="d" {...@props} />
 ##expected
-React.createElement(Component, Object.assign({}, {"a": "b", "c": "d"}, @props ))
+React.createElement(Component, Object.assign({"a": "b", "c": "d"}, @props ))
 ##end
 
 ##desc
@@ -681,7 +681,7 @@ self closing spread attribute on new line
   {...@props}
 />
 ##expected
-React.createElement(Component, Object.assign({}, { \
+React.createElement(Component, Object.assign({ \
   "a": "b",  \
   "c": "d"
   }, @props
@@ -696,7 +696,7 @@ self closing spread attribute on same line
   c="d"
   {...@props} />
 ##expected
-React.createElement(Component, Object.assign({}, { \
+React.createElement(Component, Object.assign({ \
   "a": "b",  \
   "c": "d"
   }, @props ))
@@ -712,7 +712,7 @@ self closing spread attribute on next line
 
 />
 ##expected
-React.createElement(Component, Object.assign({}, { \
+React.createElement(Component, Object.assign({ \
   "a": "b",  \
   "c": "d"
   }, @props
